@@ -28,6 +28,7 @@ Como dito anteriormente, é interessante saber quais são os seus objetivos dent
 Caso o esteja escrevendo o seu primeiro documento _Markdown_, é recomendado ler a [documentação oficial do GitHub](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) para criar um documento atraente e que é a sua cara!
 
 ## Como contribuir
+
 1. Faça um fork deste repositório.
 2. Crie uma nova branch com o nome ``
 3. Crie um arquivo `.md` com seu nome dentro da pasta `/alunos`.
