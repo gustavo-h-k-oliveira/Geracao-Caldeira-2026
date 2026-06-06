@@ -30,7 +30,7 @@ Caso o esteja escrevendo o seu primeiro documento _Markdown_, é recomendado ler
 ## Como contribuir
 
 1. Faça um fork deste repositório.
-2. Crie uma nova branch com o nome ``
+2. Crie uma nova branch com o nome `add-[SEU_NOME_DE_USUARIO]`.
 3. Crie um arquivo `.md` com seu nome dentro da pasta `/alunos`.
 4. Adicione informações sobre você e envie um pull request.
 
