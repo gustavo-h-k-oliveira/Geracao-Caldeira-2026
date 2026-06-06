@@ -55,4 +55,6 @@ Crie o arquivo:
 
 ---
 
-**Repositório referência**: [Contribuindo em um Projeto Open Source no GitHub](https://github.com/digitalinnovationone/dio-lab-open-source/tree/main)
+## Repositório referência
+
+A inspiração para este repositório é [Contribuindo em um Projeto Open Source no GitHub](https://github.com/digitalinnovationone/dio-lab-open-source/tree/main), da Digital Innovation One.
