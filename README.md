@@ -52,3 +52,7 @@ Crie o arquivo:
 
 > [!CAUTION]
 > Ao realizar o Pull Request, envie somente o seu documento sem quaisquer outras alterações. A verificação das alterações pode ser feita com o comando `git diff --name-only` ou `git status`.
+
+---
+
+**Repositório referência**: [Contribuindo em um Projeto Open Source no GitHub](https://github.com/digitalinnovationone/dio-lab-open-source/tree/main)
