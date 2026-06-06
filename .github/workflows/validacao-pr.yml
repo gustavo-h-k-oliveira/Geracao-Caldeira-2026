@@ -79,4 +79,3 @@ steps:
   - name: Aprovar validações
     run: |
       echo "Todas as validações passaram com sucesso."
-```
