@@ -2,10 +2,12 @@
 
 Olá, futuro desenvolvedores! 👋
 
-Este é um repositório público em que os alunos participantes do **Geração Caldeira** 2026 podem contribuir compartilhando um pouco sobre si e expressando a sua paixão por programação. Para participar, é bem simples: crie um documento _Markdown_ dentro da pasta `/alunos` com o seu nome de usuário. Nele, você pode compartilhar conosco um pouco sobre você e a sua motivação para entrar no Instituto Caldeira.
+Este é um repositório público em que os alunos participantes do **Geração Caldeira** 2026 podem contribuir compartilhando um pouco sobre quem são e expressando a sua paixão por programação. Para participar, é bem simples: crie um documento _Markdown_ dentro da pasta `/alunos` com o seu nome de usuário.
+
+Aqui, você pode compartilhar conosco um pouco sobre você e a sua motivação para entrar no Instituto Caldeira. O objetivo deste repositório é criar uma memória coletiva da turma, permitindo que cada participante deixe sua marca e compartilhe um pouco da sua trajetória com os demais colegas, então não deixe de caprichar!
 
 > [!IMPORTANT]
-> Mas atenção! Tenha certeza de que o seu documento e o seu nome de usuário do GitHub sejam idênticos, sem diferenciação entre letras maiúsculas e minúsculas.
+> Mas atenção! Tenha certeza de que o seu documento e o seu nome de usuário do GitHub sejam idênticos, incluindo letras maiúsculas e minúsculas (case-sensitive).
 
 ## Conteúdo recomendado
 
@@ -13,7 +15,7 @@ No seu arquivo Markdown, você é livre para se expressar da forma que quiser, m
 
 ### Sobre Mim
 
-Aqui, você pode contextualizar sobre quem você é e o que te move. Qual é o seu nome? Onde mora? Por que escolheu a área de tecnologia? O que faz durante o tempo livre? As perguntas são infinitas e você está convidado a respondê-las. 
+Aqui, você pode contextualizar sobre quem você é e o que te move. Qual é o seu nome? Onde mora? Por que escolheu a área de tecnologia? O que faz durante o tempo livre? As perguntas são infinitas e você está convidado a respondê-las.
 
 ### Tecnologias
 
@@ -34,5 +36,19 @@ Caso o esteja escrevendo o seu primeiro documento _Markdown_, é recomendado ler
 3. Crie um arquivo `.md` com seu nome dentro da pasta `/alunos`.
 4. Adicione informações sobre você e envie um pull request.
 
+### Exemplo
+
+Se o seu usuário no GitHub for:
+
+```text
+juninho-dev
+```
+
+Crie o arquivo:
+
+```text
+/alunos/juninho-dev.md
+```
+
 > [!CAUTION]
-> Ao realizar o Pull Request, envie somente o seu documento sem quaisquer outras alterações. A verificação das alterações pode ser feita com o comando `git status`.
+> Ao realizar o Pull Request, envie somente o seu documento sem quaisquer outras alterações. A verificação das alterações pode ser feita com o comando `git diff --name-only` ou `git status`.
