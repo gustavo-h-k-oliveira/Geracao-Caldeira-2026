@@ -4,78 +4,76 @@ on:
   pull_request:
     branches:
       - main
-
-workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   validar:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout do repositório
-    uses: actions/checkout@v4
+      - name: Listar arquivos alterados
+        run: |
+          git diff --name-only \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }}
 
-  - name: Listar arquivos alterados
-    run: |
-      git diff --name-only \
-        ${{ github.event.pull_request.base.sha }} \
-        ${{ github.event.pull_request.head.sha }}
+      - name: Validar quantidade de arquivos
+        run: |
+          FILES=$(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }})
 
-  - name: Validar quantidade de arquivos
-    run: |
-      FILES=$(git diff --name-only \
-        ${{ github.event.pull_request.base.sha }} \
-        ${{ github.event.pull_request.head.sha }})
+          COUNT=$(echo "$FILES" | wc -l)
 
-      COUNT=$(echo "$FILES" | wc -l)
+          echo "Arquivos alterados:"
+          echo "$FILES"
 
-      echo "Arquivos alterados:"
-      echo "$FILES"
+          if [ "$COUNT" -ne 1 ]; then
+            echo "Erro: apenas um arquivo pode ser alterado. Tem certeza que alterou apenas o seu documento?"
+            exit 1
+          fi
 
-      if [ "$COUNT" -ne 1 ]; then
-        echo "Erro: apenas um arquivo pode ser alterado. Tem certeza que alterou apenas o seu documento?"
-        exit 1
-      fi
+      - name: Validar localização do arquivo
+        run: |
+          FILE=$(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }})
 
-  - name: Validar localização do arquivo
-    run: |
-      FILE=$(git diff --name-only \
-        ${{ github.event.pull_request.base.sha }} \
-        ${{ github.event.pull_request.head.sha }})
+          if [[ ! "$FILE" =~ ^alunos/.*\.md$ ]]; then
+            echo "Erro: o arquivo deve estar em /alunos e possuir extensão .md"
+            exit 1
+          fi
 
-      if [[ ! "$FILE" =~ ^alunos/.*\.md$ ]]; then
-        echo "Erro: o arquivo deve estar em /alunos e possuir extensão .md"
-        exit 1
-      fi
+      - name: Validar dono do arquivo
+        run: |
+          FILE=$(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }})
 
-  - name: Validar dono do arquivo
-    run: |
-      FILE=$(git diff --name-only \
-        ${{ github.event.pull_request.base.sha }} \
-        ${{ github.event.pull_request.head.sha }})
+          FILE_NAME=$(basename "$FILE" .md)
+          USER_NAME="${{ github.actor }}"
 
-      FILE_NAME=$(basename "$FILE" .md)
-      USER_NAME="${{ github.actor }}"
+          echo "Usuário: $USER_NAME"
+          echo "Arquivo: $FILE_NAME"
 
-      echo "Usuário: $USER_NAME"
-      echo "Arquivo: $FILE_NAME"
+          if [ "$FILE_NAME" != "$USER_NAME" ]; then
+            echo "Erro: você só pode criar ou editar o arquivo alunos/$USER_NAME.md"
+            exit 1
+          fi
 
-      if [ "$FILE_NAME" != "$USER_NAME" ]; then
-        echo "Erro: você só pode criar ou editar o arquivo alunos/$USER_NAME.md"
-        exit 1
-      fi
+      - name: Validar conteúdo
+        run: |
+          FILE=$(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }})
 
-  - name: Validar conteúdo
-    run: |
-      FILE=$(git diff --name-only \
-        ${{ github.event.pull_request.base.sha }} \
-        ${{ github.event.pull_request.head.sha }})
+          if ! grep -q '[^[:space:]]' "$FILE"; then
+            echo "Erro: o arquivo está vazio. Não gostaria de se apresentar para a turma?"
+            exit 1
+          fi
 
-      if ! grep -q '[^[:space:]]' "$FILE"; then
-        echo "Erro: o arquivo está vazio. Não gostaria de se apresentar para a turma?"
-        exit 1
-      fi
-
-  - name: Aprovar validações
-    run: |
-      echo "Todas as validações passaram com sucesso."
+      - name: Aprovar validações
+        run: |
+          echo "Todas as validações passaram com sucesso."
